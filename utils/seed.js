@@ -19,7 +19,21 @@ await User.create(
         username: 'jyaws',
         email: 'mail@mail.com',
         thoughts: [],
-        // friends: [],
+        friends: [],
+    },
+    (err, data) => {
+        if (err) {
+            console.error(err);
+        }
+        console.log(data);
+        }
+);
+
+await User.create(
+    {
+        username: 'test',
+        email: 'test@test.com',
+        thoughts: [],
         friends: [],
     },
     (err, data) => {
