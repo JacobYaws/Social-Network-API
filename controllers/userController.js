@@ -9,11 +9,6 @@ module.exports = {
   getSingleUser(req, res) {
     console.log(req.params._id);
     User.findOne({ _id: req.params._id })
-      .select('-__v')
-      // .populate({
-      //   path: "thoughts",
-      //   select: "-__v",
-      //   })
         .select("-__v")
       .then((dbUserData) =>
         !dbUserData
@@ -39,8 +34,6 @@ module.exports = {
   },
   async updateUser(req, res) {
     let oldUser = await User.findOne({ _id: req.params._id })
-    // console.log(oldUser);
-    // console.log(oldUser.username);
     User.findOneAndUpdate(
       { _id: req.params._id },
       { $set: req.body },
@@ -81,16 +74,6 @@ module.exports = {
     }
     res.json(data);
     })
-    
-
-    // let removeFriend = User.findOneAndDelete({ _id: req.params._id })
-    //   .then((user) =>
-    //     !user
-    //       ? res.status(404).json({ message: 'No user with that ID' })
-    //       : User.deleteMany({ _id: { $in: user.friends }})
-    //   )
-    //   .then(() => res.json({ message: 'User and associated thoughts deleted!' }))
-    //   .catch((err) => res.status(500).json(err));
   },
 
 

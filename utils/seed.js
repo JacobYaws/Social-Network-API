@@ -64,9 +64,6 @@ await Thought.create(
     const query = {}
     
     await User.updateOne({ username: 'jyaws' }, { $push: { thoughts: data._id }}),
-        // { $addToSet: { thoughts: objectIdString }})
-        // console.log(User.updateOne({ thoughts: objectIdString })),
-            // { $addToSet: { thoughts: objectIdString }}));
     process.exit(0);
     }
 
