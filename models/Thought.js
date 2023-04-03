@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 // const timestamps = require('mongoose-timestamp');
 const User = require('./User');
 
+// A function that checks to see if the username of the thought is a valid entry in the database.
 let validateUsername = async function(username) {
     let res = await User.findOne({username: username})
     return (!res
@@ -11,15 +12,8 @@ let validateUsername = async function(username) {
     )
 }
 
-// let date = () => { new Date();
-// console.log(date.toDateString());
-// };
-
+// Creates a subdocument schema that holds reaction data for thoughts.
 const reactionSchema = new mongoose.Schema({
-  // reactionId: { 
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   default: null 
-  // },
   reactionBody: {
     type: String,
     required: true,
@@ -32,24 +26,17 @@ const reactionSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now,
-    // get: () => {
-
-    // }
   }
 })
-
+// Creates a document that holds all of the necessary parameters for a thought. username runs a validator to make sure that the thought has a valid user attached with it.
+// reactions holds an array of reactions to a thought (from the subdocument above)
 const thoughtSchema = mongoose.Schema({
     thoughtText: { type: String, required: true, minLength: 1, maxLength: 280},
     createdAt:{
         date: { 
-            // type: Date, 
-            // default: Date.now 
             type: Date,
             default: Date.now, 
-            // get: (date)
             get: formatDate 
-            // => {date.toDateString();
-            // console.log(date.toDateString)},
         },
     }, 
     username: {
@@ -65,21 +52,18 @@ const thoughtSchema = mongoose.Schema({
 });
 
 
-
+// Creates the Thought model
 const Thought = mongoose.model('Thought', thoughtSchema);
 
+// Creates a virtual parameter that shows the amount of reactions based on the amount of reaction entries in the reactions array.
 reactionSchema
   .virtual('reactionCount')
   // Getter
   .get(function () {
-    // return `reactions: ${this.reactions.length}`;
     return this.reactions.length;
   });
 
-
-
-// const handleError = (err) => console.error(err);
-
+// This is a function that formats the create dates of the thoughts and reactions into an easier to read form.
 function formatDate(date) {
   let d = new Date(date),
   month = '' + (d.getMonth() + 1),
@@ -89,8 +73,8 @@ function formatDate(date) {
 if (month.length < 2) month = '0' + month;
 if (day.length < 2) day = '0' + day;
 console.log(d)
-// return [year, month, day].join('-');
 return d.toLocaleDateString() + ' at ' +  d.toLocaleTimeString();
 }
 
+// Exports Thought as a module.
 module.exports = Thought;

@@ -13,7 +13,7 @@ const seed = connection.once('open', async () => {
     
 
 
-// function createUser() {
+// Creates a user with the required parameters to seed the database to reduce the chance of errors using the application.
 await User.create(
     {
         username: 'jyaws',
@@ -29,6 +29,7 @@ await User.create(
         }
 );
 
+// Creates another user with the required parameters to seed the database to reduce the chance of errors using the application.
 await User.create(
     {
         username: 'test',
@@ -45,10 +46,10 @@ await User.create(
 );
 
 
-
+// Creates a thought with the required parameters to seed the database. The thought is tied to a user.
 await Thought.create(
     {
-        thoughtText: 'ooooooooooooooooo weeeeeeeeeeeeeeee',
+        thoughtText: 'Thoughts...',
         username: 'jyaws',
     },
     async (err, data) => {
@@ -59,10 +60,10 @@ await Thought.create(
     const id = data._id;
     idString = id.toString();
     console.log(idString);
+    // This value is used to make the thoughtId compatible with the Mongo database.
     objectIdString = ('ObjectId("' + idString + '")');
-    // console.log(objectIdString);
     const query = {}
-    
+    // The new thought will be pushed to the user's thought array and will reference the thought's id.
     await User.updateOne({ username: 'jyaws' }, { $push: { thoughts: data._id }}),
     process.exit(0);
     }

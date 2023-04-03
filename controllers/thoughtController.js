@@ -1,12 +1,13 @@
 const { Thought, User } = require('../models');
 
 module.exports = {
+  // The function used to get all thoughts in the database.
   getThoughts(req, res) {
     Thought.find()
       .then((thoughts) => res.json(thoughts))
       .catch((err) => res.status(500).json(err));
   },
-  // Get a single thought
+  // Gets a single thought based on the _id passed into the request.
   getSingleThought(req, res) {
     console.log(req.params._id)
     Thought.findOne({ _id: req.params._id })
@@ -18,7 +19,7 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
-  // Create a thought
+  // Creates a thought and adds it to the user's thoughts array.
   createThought(req, res) {
     Thought.create(req.body)
       .then((thought) => {
@@ -29,6 +30,7 @@ module.exports = {
       .catch((err) => res.status(500).json(err));
       
 },
+// Deletes a thought based on the _id passed into the request.
 deleteThought(req, res) {
   Thought.findOneAndDelete({ _id: req.params._id })
     .then((thought) =>
@@ -38,6 +40,7 @@ deleteThought(req, res) {
     )
     .catch((err) => res.status(500).json(err));
 },
+// Updates a thought based on the body that is set in the request.
 updateThought(req, res) {
   Thought.findOneAndUpdate(
     { _id: req.params._id },
@@ -54,6 +57,7 @@ updateThought(req, res) {
       res.status(500).json(err);
     });
 },
+// Adds a reaction to a thought based on the body that is set in the request. If the target thought does not exist, an error will be returned.
 addReaction(req, res) {
   Thought.findOneAndUpdate(
     { _id: req.params.thoughtId },
@@ -72,14 +76,13 @@ addReaction(req, res) {
   }
 })
 },
+// Deletes a reaction based on the reactionId passed into the request. If the thought or reaction do not exist, an error will be returned.
   async deleteReaction(req, res) {
     await Thought.findOneAndUpdate(
       { _id: req.params.thoughtId },
       { $pull: { reactions: { _id: req.params.reactionId }}},
       { runValidators: true, new: true }
       )
-      // .then((dbThoughtData) => res.json(dbThoughtData))
-      // .catch((err) => res.json(err));
       .then((data) => {
         console.log(data)
         if(!data) {
