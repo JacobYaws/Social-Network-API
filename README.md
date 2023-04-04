@@ -32,6 +32,6 @@ After the install is complete, run 'npm run seed' and then 'npm start' to start 
 
 -Github link: https://github.com/JacobYaws/Social-Network-API
 
-    -To download, navigate to the repository and click on the green 'Code' button. Copy the ssh link and clone it in a terminal by using 'git clone git@github.com:JacobYaws/Note-Taker-Project.git'
+    -To download, navigate to the repository and click on the green 'Code' button. Copy the ssh link and clone it in a terminal by using 'git clone git@github.com:JacobYaws/Social-Network-API.git'
 
 -Link to demonstrational video: https://drive.google.com/file/d/19zNi_5k_NB2ETwENwr5w69DOGUmd5GPz/view
