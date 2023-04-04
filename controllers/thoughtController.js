@@ -66,7 +66,7 @@ addReaction(req, res) {
 
   )
 .then((dbThoughtData) => {
-  console.log(dbThoughtData.params)
+  // console.log(dbThoughtData.params)
   if (!dbThoughtData) {
     res.status(404).json({
       message: "No thoughts with this ID"

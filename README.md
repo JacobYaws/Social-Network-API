@@ -1,14 +1,37 @@
 # Social-Network-API
-GIVEN a social network API
 
-<!-- WHEN I enter the command to invoke the application
-THEN my server is started and the Mongoose models are synced to the MongoDB database -->
+## Description
 
-<!-- WHEN I open API GET routes in Insomnia for users and thoughts
-THEN the data for each of these routes is displayed in a formatted JSON -->
+In this project, I was tasked with creating a social network back end that used a NoSQL database (MongoDB). The application is setup to add and delete thoughts to and fromusers, add and delete reactions to and from the thoughts, and add and delete friends from user accounts.
+Users will be able to utilize a functioning back end to create a social network application.
 
-<!-- WHEN I test API POST, PUT, and DELETE routes in Insomnia
-THEN I am able to successfully create, update, and delete users and thoughts in my database -->
-<!-- 
-WHEN I test API POST and DELETE routes in Insomnia
-THEN I am able to successfully create and delete reactions to thoughts and add and remove friends to a user’s friend list -->
+## Table of Contents
+[Install](#install)
+[Overview](#overview)
+[Screenshots](#screenshots)
+[Links](#links)
+
+## Install
+To install the application, you will need to install the required npm packages for the project by running 'npm i' in a command line terminal.
+After the install is complete, run 'npm run seed' and then 'npm start' to start the application with a seeded database at `http://localhost:3001`.
+
+## Overview
+
+ - For this project, I used Express.js to help serve the back end and Mongoose for the noSQL database (MongoDB). I also used the build in JavaScript Date object to help format created dates for thoughts and reactions.
+ - When the application is started (and the database has been seeded), the user will be able to query the API endpoints to view or modify user, thought, friends, or reactions data.
+ - If the correct endpoint is selected and the request body and parameters are correct, users will be able to create new users, reactions, thoughts, and friend connections through the API itself. 
+ - When a thought or reaction is created, the date is formatted to one that is easier to read and understand.
+
+
+## Screenshots
+
+<img src="https://github.com/JacobYaws/Social-Network-API/blob/main/public/assets/images/Assign18screenshot1.png">
+<img src="https://github.com/JacobYaws/Social-Network-API/blob/main/public/assets/images/Assign18screenshot2.png">
+
+## Links
+
+-Github link: https://github.com/JacobYaws/Social-Network-API
+
+    -To download, navigate to the repository and click on the green 'Code' button. Copy the ssh link and clone it in a terminal by using 'git clone git@github.com:JacobYaws/Note-Taker-Project.git'
+
+-Link to demonstrational video: https://drive.google.com/file/d/19zNi_5k_NB2ETwENwr5w69DOGUmd5GPz/view

@@ -14,6 +14,12 @@ let validateUsername = async function(username) {
 
 // Creates a subdocument schema that holds reaction data for thoughts.
 const reactionSchema = new mongoose.Schema({
+  createdAt: {
+    date: {
+    type: Date,
+    default: Date.now,
+    get: formatDate
+  },
   reactionBody: {
     type: String,
     required: true,
@@ -23,10 +29,7 @@ const reactionSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  }
+}
 })
 // Creates a document that holds all of the necessary parameters for a thought. username runs a validator to make sure that the thought has a valid user attached with it.
 // reactions holds an array of reactions to a thought (from the subdocument above)

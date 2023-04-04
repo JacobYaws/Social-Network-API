@@ -13,7 +13,7 @@ const {
 // getUsers and createUser will be served through the /api/thoughts endpoint.
 router.route('/').get(getThoughts).post(createThought);
 
-// /api/comments/:thoughtId
+// /api/thoughts/:thoughtId
 // getSingleThought, deleteThought, and updateThought will all be served through the /api/thoughts/:_id endpoint.
 router.route('/:_id').get(getSingleThought).delete(deleteThought).put(updateThought);
 
