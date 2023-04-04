@@ -25,8 +25,8 @@ After the install is complete, run 'npm run seed' and then 'npm start' to start 
 
 ## Screenshots
 
-<img src="https://github.com/JacobYaws/Social-Network-API/blob/main/public/assets/images/Assign18screenshot1.png">
-<img src="https://github.com/JacobYaws/Social-Network-API/blob/main/public/assets/images/Assign18screenshot2.png">
+<img src="https://github.com/JacobYaws/Social-Network-API/blob/main/assets/Assign18Screenshot1.png">
+<img src="https://github.com/JacobYaws/Social-Network-API/blob/main/assets/Assign18Screenshot2.png">
 
 ## Links
 
